@@ -1,0 +1,20 @@
+<?php
+
+if ($this->message) {
+  echo $this->message;
+}
+
+if (is_array($this->files)) {
+  echo '<ul>';
+  foreach ($this->files as $file) {
+    echo '<li>'.$file.
+    ' <a href="'.$this->url(array('controller'=>'pdf',
+                                 'action'=>'viewmeta',
+                                 'file' =>urlencode($file) ),'default', true).'" title="View PDF Meta">View Meta</a>' .
+    ' <a href="'.$this->url(array('controller'=>'pdf',
+                                 'action'=>'editmeta',
+                                 'file' =>urlencode($file) ),'default', true).'" title="Edit PDF Meta">Edit Meta</a>'
+    .'</li>';
+  }
+  echo '</ul>';
+}

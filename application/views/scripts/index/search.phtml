@@ -1,0 +1,47 @@
+<form action="" method="get" name="searchForm">
+    <input type="text" name="q" id="q" value="<?php echo $this->queryString; ?>" />
+    <input type="submit" name="search" value="Search" />
+</form>
+<?php
+if (!is_null($this->messages['q'])) {
+    echo '<ul>';
+    foreach ($this->messages['q'] as $message) {
+        echo '<li>' . $message . '</li>';
+    }
+    echo '</ul>';
+}
+
+if (!is_null($this->hits)) {
+    echo count($this->hits) . '<hr />';
+
+    foreach ($this->hits as $hit) {
+        $fields = $hit->getDocument()->getFieldNames();
+        echo 'id: ' . $hit->id . '<br />';
+        echo 'score: ' . $hit->score . '<br />';
+
+        echo 'Filename: ' . $hit->getDocument()->Filename . '<br />';
+        echo 'Key: ' . $hit->getDocument()->Key . '<br />';
+
+        if (in_array('Title', $fields)) {
+            echo 'Title: ' . $hit->getDocument()->Title . '<br />';
+        }
+
+        if (in_array('Subject', $fields)) {
+            echo 'Subject: ' . $hit->getDocument()->Subject . '<br />';
+        }
+
+        if (in_array('Keyword', $fields)) {
+            echo 'Keyword: ' . $hit->getDocument()->Keyword . '<br />';
+        }
+
+        if (in_array('CreationDate', $fields)) {
+            echo 'CreationDate: ' . $hit->getDocument()->CreationDate . '<br />';
+        }
+
+        if (in_array('Author', $fields)) {
+            echo 'Author: ' . $hit->getDocument()->Author . '<br />';
+        }
+
+        echo '<hr />';
+    }
+}

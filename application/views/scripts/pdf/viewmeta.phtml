@@ -1,0 +1,14 @@
+<?php
+if (is_array($this->metaValues)) {
+  echo '<p>Meta data for: ' . $this->file . '</p>';
+  echo '<table>
+        <tr><th>Meta Name</th><th>Meta Value</th></tr>';
+  foreach ($this->metaValues as $metaName => $metaValue) {
+    echo '<tr><td>'.$metaName.'</td><td>'.$metaValue.'</td></tr>';
+  }
+  echo '</table>';
+}
+
+echo '<p><a href="'.$this->url(array('controller'=>'pdf',
+                                 'action'=>'editmeta',
+                                 'file' =>urlencode($this->file) ),'default', true).'" title="Edit PDF Meta">Edit Meta</a></p>';
