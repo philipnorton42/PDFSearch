@@ -1,0 +1,8 @@
+For more information about this project please see the following page:
+
+http://www.hashbangcode.com/blog/zend-lucene-and-pdf-documents-part-1-pdf-meta-data-2081.html
+
+To get the project up and running follow the following instructions:
+
+1 Download Zend Framework from framework.zend.com and put the Zend directory into the library directory.
+2 Open up the file application/configs/application.ini and change the references to your lucene and file directory locations.
